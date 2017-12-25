@@ -120,6 +120,7 @@ void MainWindow::on_btnLoadKonturFile_clicked()
         while(!in.atEnd()) {
             int state = 1;
             QString line = in.readLine();
+            theWholeFile = line;
             QStringList fields = line.split(".");
             //nSquares<<fields.at(0);
             QPolygon poly;
@@ -228,25 +229,27 @@ void MainWindow::saveTextFile(QString saveFileName)
     if ( file.open(QIODevice::ReadWrite) )
     {
         QTextStream stream( &file );
-        stream << tr("Средняя яркость R: ") <<priznaks[0]<< "\r\n";
-        stream << tr("Средняя яркость G: ") <<priznaks[1]<< "\r\n";
-        stream << tr("Средняя яркость B: ") <<priznaks[2]<< "\r\n";
-        stream << tr("СКО R: ") <<priznaks[3]<< "\r\n";
-        stream << tr("СКО G: ") <<priznaks[4]<< "\r\n";
-        stream << tr("СКО B: ") <<priznaks[5]<< "\r\n";
-        stream << tr("Диапазон R: ") <<priznaks[6]<< "\r\n";
-        stream << tr("Диапазон G: ") <<priznaks[7]<< "\r\n";
-        stream << tr("Диапазон B: ") <<priznaks[8]<< "\r\n";
-        stream << tr("Текстур призн МПС R: ") <<priznaks[9]<< "\r\n";
-        stream << tr("Текстур призн МПС G: ") <<priznaks[10]<< "\r\n";
-        stream << tr("Текстур призн МПС B: ") <<priznaks[11]<< "\r\n";
-        stream << tr("Тек пр длины серий R: ") <<priznaks[12]<< "\r\n";
-        stream << tr("Тек пр длины серий G: ") <<priznaks[13]<< "\r\n";
-        stream << tr("Тек пр длины серий B: ") <<priznaks[14]<< "\r\n";
-        stream << tr("Форма: \r\n\r\n") <<priznaks[15]<< "\r\n";
-        stream << tr("Площадь: \r\n\r\n") <<priznaks[16]<< "\r\n";
-        stream << tr("Периметр: \r\n\r\n") <<priznaks[17]<< "\r\n";
-
+//        stream << theWholeFile;
+        stream << ".M";
+        stream << "." << priznaks[0] ; // Средняя яркость R
+        stream << "." << priznaks[1] ; // Средняя яркость G
+        stream << "." << priznaks[2] ; // Средняя яркость B
+        stream << "." << priznaks[3] ; // СКО R
+        stream << "." << priznaks[4] ; // СКО G
+        stream << "." << priznaks[5] ; // СКО B
+        stream << "." << priznaks[6] ; // Диапазон R
+        stream << "." << priznaks[7] ; // Диапазон G
+        stream << "." << priznaks[8] ; // Диапазон B
+        stream << "." << priznaks[9] ; // Текстур призн МПС R
+        stream << "." << priznaks[10]; // Текстур призн МПС G
+        stream << "." << priznaks[11]; // Текстур призн МПС B
+        stream << "." << priznaks[12]; // Тек пр длины серий R
+        stream << "." << priznaks[13]; // Тек пр длины серий G
+        stream << "." << priznaks[14]; // Тек пр длины серий B
+        stream << "." << priznaks[15]; // Форма
+        stream << "." << priznaks[16]; // Площадь
+        stream << "." << priznaks[17]; // Периметр
+        stream << ".;";
     }
 }
 //выбор изображения в таблице

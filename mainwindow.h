@@ -21,6 +21,7 @@ public:
     void paramsRGB();
     void SKORGB();
     void saveTextFile(QString saveFileName);
+    QString theWholeFile;
 
 private slots:
     void on_btnLoadImage_clicked();
